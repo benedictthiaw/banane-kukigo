@@ -1,0 +1,465 @@
+/* =========================================================
+   1) THEME / VARIABLES (couleurs, tailles, ombres, rayons)
+   ========================================================= */
+:root{
+  --bg: #0b0c10;
+  --panel: #12141a;
+  --panel-2: #0f1117;
+  --text: #f4f6ff;
+  --muted: rgba(244,246,255,.72);
+  --line: rgba(244,246,255,.12);
+  --accent: #7CFF8A;
+  --accent2: #ffd36a;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --radius: 18px;
+  --container: 1120px;
+}
+
+/* =========================================================
+   2) BASE / RESET (règles globales)
+   ========================================================= */
+*{ box-sizing: border-box; }
+html,body{ height:100%; }
+
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  background:
+    radial-gradient(1200px 700px at 20% 10%, rgba(124,255,138,.12), transparent 60%),
+    radial-gradient(1000px 700px at 90% 0%, rgba(255,211,106,.10), transparent 55%),
+    var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+a{ color: inherit; text-decoration: none; }
+img{ max-width: 100%; display:block; }
+
+/* =========================================================
+   3) LAYOUT / CONTAINER (centrage + largeur max)
+   ========================================================= */
+.container{
+  width: min(var(--container), calc(100% - 40px));
+  margin: 0 auto;
+}
+
+/* =========================================================
+   4) HEADER / NAV (barre du haut)
+   ========================================================= */
+.header{
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(11,12,16,.72);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.header__inner{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  padding: 14px 0;
+  gap: 18px;
+}
+
+/* Logo */
+.brand{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  font-weight: 700;
+  letter-spacing: .3px;
+}
+.brand__dot{
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  box-shadow: 0 0 0 6px rgba(124,255,138,.08);
+}
+.brand__name{ font-size: 18px; }
+
+/* Navigation */
+.nav{
+  display:flex;
+  align-items:center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.nav a{
+  padding: 8px 10px;
+  border-radius: 10px;
+  color: var(--muted);
+  border: 1px solid transparent;
+}
+.nav a:hover{
+  color: var(--text);
+  border-color: var(--line);
+  background: rgba(255,255,255,.03);
+}
+
+/* CTA header (visible seulement sur desktop) */
+.header__cta{ display: none; }
+
+/* =========================================================
+   5) BOUTONS (composants réutilisables)
+   ========================================================= */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.03);
+  color: var(--text);
+  transition: transform .12s ease, background .12s ease, border-color .12s ease;
+  font-weight: 600;
+}
+.btn:hover{
+  transform: translateY(-1px);
+  border-color: rgba(244,246,255,.22);
+  background: rgba(255,255,255,.05);
+}
+
+.btn--primary{
+  border-color: rgba(124,255,138,.35);
+  background: rgba(124,255,138,.12);
+}
+.btn--primary:hover{ background: rgba(124,255,138,.18); }
+
+.btn--ghost{
+  border-color: rgba(255,211,106,.30);
+  background: rgba(255,211,106,.10);
+}
+.btn--ghost:hover{ background: rgba(255,211,106,.16); }
+
+/* =========================================================
+   6) HERO (intro)
+   ========================================================= */
+.hero{ padding: 48px 0 22px; }
+
+.hero__grid{
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 24px;
+  align-items: center;
+}
+
+/* petit badge */
+.badge{
+  display:inline-flex;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  background: rgba(255,255,255,.03);
+  margin: 0 0 14px;
+}
+
+.hero h1{
+  font-size: clamp(28px, 3.4vw, 46px);
+  line-height: 1.1;
+  margin: 0 0 12px;
+}
+
+.accent{
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  background-clip:text;
+  color: transparent;
+}
+
+.lead{
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 16.5px;
+}
+
+.hero__actions{
+  display:flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 10px 0 14px;
+}
+
+.note{
+  margin: 0;
+  color: rgba(244,246,255,.62);
+  font-size: 14px;
+}
+
+/* =========================================================
+   7) SECTIONS (espacement + fond alternatif)
+   ========================================================= */
+.section{ padding: 44px 0; }
+
+.section--alt{
+  background: rgba(255,255,255,.02);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.section h2{
+  margin: 0 0 12px;
+  font-size: 28px;
+}
+
+.section__head{
+  display:flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.muted{ color: rgba(244,246,255,.55); }
+
+/* =========================================================
+   8) OBJECTIF (cards)
+   ========================================================= */
+.cards{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.card{
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(18,20,26,.55);
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+.card h3{ margin: 0 0 6px; font-size: 18px; }
+.card p{ margin: 0; color: var(--muted); }
+
+/* =========================================================
+   9) A PROPOS (mise en page + listes)
+   ========================================================= */
+.about{
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.bullets{
+  margin: 12px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+}
+.bullets li{ margin: 6px 0; }
+
+/* =========================================================
+   10) PRODUITS (grilles + éléments)
+   ========================================================= */
+.group-title{
+  margin: 22px 0 10px;
+  font-size: 18px;
+  color: rgba(244,246,255,.9);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.product{
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(18,20,26,.40);
+  padding: 14px;
+}
+.product h4{ margin: 0 0 6px; font-size: 16.5px; }
+.product p{ margin: 0; color: var(--muted); font-size: 14.5px; }
+
+.disclaimer{
+  margin-top: 14px;
+  color: rgba(244,246,255,.58);
+  font-size: 13.5px;
+  border-left: 3px solid rgba(255,211,106,.35);
+  padding-left: 12px;
+}
+
+/* =========================================================
+   11) MEDIA (images “pro” : hero, portrait, contact)
+   ========================================================= */
+.media{
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: rgba(18,20,26,.55);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.media img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;         /* remplissage propre */
+  object-position: center;
+}
+
+/* Variantes de taille */
+.media--hero{
+  aspect-ratio: 4 / 5;
+  max-height: 460px;
+}
+.media--portrait{
+  aspect-ratio: 3 / 4;
+  max-height: 520px;
+}
+.media--contact{
+  aspect-ratio: 4 / 5;
+  max-height: 520px;
+}
+
+/* =========================================================
+   12) GALERIE PHOTOS
+   ========================================================= */
+.gallery{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.gallery img{
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  background: rgba(18,20,26,.35);
+}
+
+/* =========================================================
+   LIGHTBOX (agrandissement image)
+   ========================================================= */
+.lightbox{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease;
+  z-index: 999;
+}
+
+.lightbox.active{
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox__img{
+  max-width: 90%;
+  max-height: 85vh;
+  object-fit: contain; /* IMPORTANT → garde proportion normale */
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.6);
+}
+
+.lightbox__close{
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 40px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.gallery img,
+.media img{
+  cursor: zoom-in;
+  transition: transform .3s ease;
+}
+
+.gallery img:hover,
+.media img:hover{
+  transform: scale(1.04);
+}
+
+/* =========================================================
+   13) CONTACT (mise en page + bloc infos)
+   ========================================================= */
+.contact{
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.contact__actions{
+  display:flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 14px 0;
+}
+
+.small-card{
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(18,20,26,.55);
+  padding: 14px;
+}
+.small-card h3{ margin: 0 0 8px; font-size: 16px; }
+
+/* =========================================================
+   14) FOOTER
+   ========================================================= */
+.footer{
+  padding: 26px 0;
+  border-top: 1px solid var(--line);
+}
+
+.footer__inner{
+  display:flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  color: rgba(244,246,255,.65);
+  font-size: 14px;
+}
+
+/* =========================================================
+   15) RESPONSIVE (tablette + mobile)
+   ========================================================= */
+
+/* Desktop */
+@media (min-width: 920px){
+  .header__cta{ display: inline-flex; }
+}
+
+/* Tablette / mobile */
+@media (max-width: 920px){
+  .hero__grid, .about, .contact{ grid-template-columns: 1fr; }
+  .cards{ grid-template-columns: 1fr; }
+  .grid{ grid-template-columns: 1fr; }
+  .gallery{ grid-template-columns: repeat(2, 1fr); }
+
+  .media--hero{ max-height: 380px; }
+  .media--portrait,
+  .media--contact{ max-height: 420px; }
+}
+
+/* Petit mobile */
+@media (max-width: 420px){
+  .nav{ display:none; }
+  .gallery{ grid-template-columns: 1fr; }
+
+  .media--hero{ max-height: 320px; }
+  .media--portrait,
+  .media--contact{ max-height: 360px; }
+}
