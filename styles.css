@@ -408,6 +408,19 @@ img{ max-width: 100%; display:block; }
   margin: 14px 0;
 }
 
+/* Groupe téléphone / WhatsApp */
+.contact-group{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-group h3{
+  margin: 10px 0 5px;
+  font-size: 16px;
+  color: var(--text);
+}
+
 .small-card{
   border: 1px solid var(--line);
   border-radius: var(--radius);
